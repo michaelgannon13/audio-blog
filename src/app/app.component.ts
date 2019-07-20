@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'blogcast-service';
+  url = window.location.href;
+
+  saveArticle() {
+   console.log(this.url);
+  }
 }
