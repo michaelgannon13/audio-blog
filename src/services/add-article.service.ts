@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class AddArticleService {
   
-  url = new URL("http://blogcast.wip/api/articles");
+  url = new URL("http://blogcast.host/api/articles");
  
   httpOptions = {
     headers: new HttpHeaders({
