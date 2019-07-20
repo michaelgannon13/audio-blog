@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddArticleService } from '../services/add-article.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'blogcast-service';
+
+  constructor(private addArticleService: AddArticleService) { }
+
   url = window.location.href;
 
   saveArticle() {
-   console.log(this.url);
+   this.addArticleService.addArticle(this.url);   
   }
 }
