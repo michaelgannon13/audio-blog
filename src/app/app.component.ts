@@ -14,8 +14,6 @@ export class AppComponent {
   response;
 
   saveArticle() {
-    this.addArticleService.addArticle(this.url);
-
     this.addArticleService
       .addArticle(this.url)
       .subscribe((res: any[]) => {
