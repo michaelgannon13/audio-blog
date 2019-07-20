@@ -11,8 +11,16 @@ export class AppComponent {
   constructor(private addArticleService: AddArticleService) { }
 
   url = window.location.href;
+  response;
 
   saveArticle() {
-   this.addArticleService.addArticle(this.url);   
+    this.addArticleService.addArticle(this.url);
+
+    this.addArticleService
+      .addArticle(this.url)
+      .subscribe((res: any[]) => {
+        this.response = res;
+        console.log(this.response);
+    });
   }
 }

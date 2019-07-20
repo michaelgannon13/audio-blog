@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +12,12 @@ export class AddArticleService {
   
   url = new URL("http://blogcast.wip/api/articles");
  
-  headers = {
+  httpOptions = {
+    headers: new HttpHeaders({
       "Authorization": "Bearer {token}",
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      "Accept": "application/json"
+    })
   }
 
  body = {
@@ -20,24 +25,10 @@ export class AddArticleService {
     "voice": "CFj59"
   }
 
-  /*
-
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-
-
-*/
-  
   constructor(private http: HttpClient) { }
 
-  addArticle(url) {
-    console.log(url);
+  addArticle (url): Observable<any> {
+    return this.http.post(url, this.httpOptions);
   }
 }
 
